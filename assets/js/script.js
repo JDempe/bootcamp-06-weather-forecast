@@ -198,6 +198,7 @@ $(document).ready(function () {
       //  Universal Elements for all cards
       let cardDate = weatherCards[i].querySelector(".card-date");
       let cardIcon = weatherCards[i].querySelector(".card-icon");
+      cardIcon.setAttribute("alt", displayData[i].weather.description);
 
       //  Display data that is different for the current weather card and the 5 day forecast cards
       // Current Weather Card
