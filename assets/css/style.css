@@ -1,0 +1,93 @@
+p {
+  margin: 0;
+}
+
+/* Search bar and Current Weather */
+main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin: 30px 10%;
+}
+
+/* Search Bar */
+main .search {
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+   justify-content: center;
+
+
+}
+
+/* The search/history button and all search location inputs are groups lists */
+main ul {
+  list-style: none;
+  width: 100%;
+  padding: 0;
+}
+
+main ul li {
+  width: fit-content;
+  margin: 10px;
+}
+
+/* Textboxes for entering location */
+main .entrybox {
+  display: block;
+  flex-wrap: wrap;
+  width: fit-content;
+  text-align: center;
+}
+
+/* Search button and history button */
+main .searchbox {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  width: fit-content;
+}
+
+#city-dropdown {
+  width: fit-content;
+  height:auto;
+   max-height: 220px;
+  overflow-y: scroll;
+}
+
+.dropdown-item {
+  height: 35px;
+}
+
+.current-weather-card {
+  width: fit-content;
+  min-width: 300px;
+}
+
+.current-weather-card div .row {
+  margin-top: 20px;
+}
+
+/* Weather metrics for current weather card */
+.metrics {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   width: fit-content;
+}
+
+/* The Five Day Forecast Section */
+section {
+  margin: 0px 10%;
+}
+
+/* Each card in the forecast */
+.weather-card {
+  min-width: fit-content;
+  max-width: 60%
+}
+
+/* Used to hide the forecast */
+.hidden {
+  display: none;
+}
