@@ -1,9 +1,9 @@
 $(document).ready(function () {
   // API's
   const APIkey = "b988c5da8a93a2ffad9b54c99814d870";
-  const geocodingAPI = "http://api.openweathermap.org/geo/1.0/direct?q=";
-  const currentWeatherAPI = "http://api.openweathermap.org/data/2.5/weather";
-  const fiveDayForecastAPI = "http://api.openweathermap.org/data/2.5/forecast";
+  const geocodingAPI = "https://api.openweathermap.org/geo/1.0/direct?q=";
+  const currentWeatherAPI = "https://api.openweathermap.org/data/2.5/weather";
+  const fiveDayForecastAPI = "https://api.openweathermap.org/data/2.5/forecast";
 
   // Variables
   const searchButton = document.querySelector("#search-button");
