@@ -48,6 +48,7 @@ main .searchbox {
   width: fit-content;
 }
 
+/* History of entries dropdown */
 #city-dropdown {
   width: fit-content;
   height:auto;
@@ -55,13 +56,15 @@ main .searchbox {
   overflow-y: scroll;
 }
 
+/* Item in dropdown list */
 .dropdown-item {
   height: 35px;
 }
 
+/* Current weathercard */
 .current-weather-card {
   width: fit-content;
-  min-width: 300px;
+  min-width: 400px;
 }
 
 .current-weather-card div .row {
@@ -84,7 +87,9 @@ section {
 /* Each card in the forecast */
 .weather-card {
   min-width: fit-content;
-  max-width: 60%
+  max-width: 60%;
+  margin-left: auto;
+   margin-right: auto;
 }
 
 /* Used to hide the forecast */

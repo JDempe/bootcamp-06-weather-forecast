@@ -5,7 +5,7 @@ $(document).ready(function () {
   const currentWeatherAPI = "http://api.openweathermap.org/data/2.5/weather";
   const fiveDayForecastAPI = "http://api.openweathermap.org/data/2.5/forecast";
 
-  //  Variables
+  // Variables
   const searchButton = document.querySelector("#search-button");
   const searchInputCity = document.querySelector("#search-input-city");
   const searchInputState = document.querySelector("#search-input-state");
@@ -20,7 +20,7 @@ $(document).ready(function () {
   var cityList = JSON.parse(localStorage.getItem("cityList"));
   populateDropdown(cityList, cityDropdown);
 
-  //   Add event listener to the dropdown list so that when a city is selected, the weather data is displayed
+  // Add event listener to the dropdown list so that when a city is selected, the weather data is displayed
   cityDropdown.addEventListener("click", function (event) {
     // retrieve the name of the city from the selection list item in the dropdown that triggered the event
     let city = event.target.textContent.split(",")[0];
@@ -51,7 +51,7 @@ $(document).ready(function () {
     retrieveWeatherData(city);
   });
 
-  //   Add event listener to the search button so that when it is clicked, the weather data is displayed
+  // Add event listener to the search button so that when it is clicked, the weather data is displayed
   searchButton.addEventListener("click", function () {
     // Get the geo coordinates for the city
     //  Grab  content from the search inputs
@@ -76,7 +76,7 @@ $(document).ready(function () {
   });
 
   // Add event that if the enter button is clicked, the search button is clicked
-  searchInputCity.addEventListener("keyup", function (event) {
+  document.addEventListener("keyup", function (event) {
     if (event.keyCode === 13) {
       event.preventDefault();
       searchButton.click();
@@ -116,6 +116,7 @@ $(document).ready(function () {
     return average;
   }
 
+  // Get the weather description for the day. The API returns data every 3 hours.  We want to find the most common weather description for the day.
   function weatherDescription(data) {
     let weatherDescription = [];
 
@@ -153,6 +154,7 @@ $(document).ready(function () {
   }
 
   // Look at each date and see if it is in the dates array.  If not, add it.
+  // TODO If it is before 3am local time, then use the current date as the first day in the forecast?
   function gatherDates(data, currentDate) {
     let dates = {};
     for (var i = 0; i < data.list.length; i++) {
@@ -242,7 +244,7 @@ $(document).ready(function () {
     }
   }
 
-  //   Populate the dropdown menu with the cities
+  // Populate the dropdown menu with the cities
   function populateDropdown(cityList, cityDropdown) {
     cityDropdown.innerHTML = "";
     if (cityList) {
@@ -266,7 +268,7 @@ $(document).ready(function () {
     }
   }
 
-  //   Get the weather data for the city that was passed in
+  // Get the weather data for the city that was passed in
   async function retrieveWeatherData(locationForAPI) {
     fetch(geocodingAPI + locationForAPI + "&limit=1" + "&appid=" + APIkey).then(
       function (response) {
@@ -282,6 +284,7 @@ $(document).ready(function () {
 
             // Check to see if the city is already in local storage
             // TODO Check the state and country as well
+            // TODO Cap the number of cities in local storage
             let cityList = JSON.parse(localStorage.getItem("cityList"));
 
             if (cityList === null) {
