@@ -20,6 +20,7 @@ $(document).ready(function () {
   var cityList = JSON.parse(localStorage.getItem("cityList"));
   populateDropdown(cityList, cityDropdown);
 
+  // TODO Add await to the function calls so that the data is retrieved before it is all displayed.  Add a loading icon to the page while the data is being retrieved.
   // Add event listener to the dropdown list so that when a city is selected, the weather data is displayed
   cityDropdown.addEventListener("click", function (event) {
     // retrieve the name of the city from the selection list item in the dropdown that triggered the event
@@ -77,7 +78,7 @@ $(document).ready(function () {
 
   // Add event that if the enter button is clicked, the search button is clicked
   document.addEventListener("keyup", function (event) {
-    if (event.keyCode === 13) {
+    if (event.key ==='Enter') {
       event.preventDefault();
       searchButton.click();
     }
