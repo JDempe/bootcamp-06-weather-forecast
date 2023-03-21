@@ -81,7 +81,7 @@ main .searchbox {
 
 /* The Five Day Forecast Section */
 section {
-  margin: 0px 10%;
+  margin: 0px 10% 20px 10%;
 }
 
 /* Each card in the forecast */

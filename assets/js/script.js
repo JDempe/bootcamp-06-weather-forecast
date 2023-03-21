@@ -1,3 +1,5 @@
+// TODO Refactor using entirely jQuery?
+
 $(document).ready(function () {
   // API's
   const APIkey = "b988c5da8a93a2ffad9b54c99814d870";
