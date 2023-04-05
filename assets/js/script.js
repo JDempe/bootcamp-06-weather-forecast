@@ -1,5 +1,3 @@
-// TODO Refactor using entirely jQuery?
-
 $(document).ready(function () {
   // API's
   const APIkey = "b988c5da8a93a2ffad9b54c99814d870";
@@ -80,7 +78,7 @@ $(document).ready(function () {
 
   // Add event that if the enter button is clicked, the search button is clicked
   document.addEventListener("keyup", function (event) {
-    if (event.key ==='Enter') {
+    if (event.key === "Enter") {
       event.preventDefault();
       searchButton.click();
     }
@@ -286,9 +284,7 @@ $(document).ready(function () {
             }
             // Save the city data to local storage
 
-            // Check to see if the city is already in local storage
-            // TODO Check the state and country as well
-            // TODO Cap the number of cities in local storage
+            // Check to see if there is anything in local storage
             let cityList = JSON.parse(localStorage.getItem("cityList"));
 
             if (cityList === null) {
@@ -296,15 +292,29 @@ $(document).ready(function () {
               cityList.push(cityData[0]);
               localStorage.setItem("cityList", JSON.stringify(cityList));
             } else {
+              // See if the city is already in the list
               let cityExists = false;
-              cityList.forEach(function (city) {
-                if (city.name == cityData[0].name) {
+              cityList.every(function (city) {
+                if (
+                  city.name == cityData[0].name &&
+                  city.state == cityData[0].state &&
+                  city.country == cityData[0].country
+                ) {
                   cityExists = true;
-                  return cityExists;
+                  // Since it exists, stop the loop, but first put the city at the top of the list
+                  cityList.unshift(cityList.splice(cityList.indexOf(city), 1)[0]);
+                  return false;
+                } else {
+                  return true;
                 }
               });
+
+              // If the city is not in the list, add it
               if (!cityExists) {
-                cityList.push(cityData[0]);
+                // Add the city to the top of the list
+                cityList.unshift(cityData[0]);
+              // Cap the number of cities in local storage at 10
+              cityList = cityList.slice(-10);
                 localStorage.setItem("cityList", JSON.stringify(cityList));
               }
             }
